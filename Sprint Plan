@@ -1,1 +1,21 @@
-Sprint 0
+Sprint 0 Backlog
+
+Tiedetään mihin ympäristöön pystytetään (Versiot ym, Teemu Topi Mikko)
+Pystytetään testiympäristö
+
+Speksataan liittyvät palikat aka arkkitehtuuri (Teemu, Topi)
+  Kaavio miten data liikkuu
+  
+Mitä tietoa on? Eli kohdeluokat (Mikko, Teemu)
+
+Mitä saitti tekee (Antti, Anni)
+  käyttötapausten kirjottaminen
+  käyttöliittymäsuunnittelu
+
+Tietomallinnus (Mikko)
+  Tietokantojen määrittely
+  Taulujen määrittely
+  Luokittelun määrittely
+  ER-malli
+  
+  
