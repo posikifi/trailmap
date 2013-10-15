@@ -1,4 +1,4 @@
-raw.wpts(id,geom,time,z,track_id)
+raw.trkpt(id,geom,time,z,track_id)
 raw.tracks(id,user,geom) // Geometria muodostettu waypointsista
 trail.segment(id,len,geom,alusta,selkeys,epatas) //digitoitu tracksin perusteella
 trail.poi(id,geom,type,selite) //lisättyjä pistekohteita
