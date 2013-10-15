@@ -23,3 +23,10 @@ Drupal 7.2.3 (käyttäjien hallinta)
 PHP Kirjastot:
 php5-pgsql
 
+
+
+PHP5 PDO&pgsql asennus:
+apt-get install php5-dev
+pecl install pdo
+pecl install pdo_pgsql
+
