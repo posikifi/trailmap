@@ -25,6 +25,7 @@ php5-pgsql
 
 
 
+
 PHP5 PDO&pgsql asennus:
 apt-get install php5-dev
 pecl install pdo
