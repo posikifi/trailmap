@@ -2,17 +2,29 @@ Käyttötapauskuvaukset
 
 GPS-trackin lataaminen ja polkujen luokittelu
 
-Käyttäjän on luotava itselleen tunnus palveluun voidakseen ladata GPS-trackejaan. Käyttäjä kirjautuu tunnuksillaan palveluun, jossa hän voi ladata GPS-trackeja syöttämällä haluamansa gpx-tiedoston lomakemuotoiseen kenttään. Kun tiedosto on ladattu palveluun, esitetään käyttäjän reitti taustakartalla tai ilmakuvalla. Käyttäjä jakaa reitin haluamiinsa osiin, jotka tarkoittavat kulkukelpoisuudeltaan erilaisia polun pätkiä, ja valitsee kullekin osalle kulkukelpoisuusluokan alasvetovalikosta tai kirjoittamalla itse luokittelun. Tallennettuaan luokittelut voi käyttäjä tarkastella lataamiaan polkuja kartalla, jolla näkyvät kaikki palveluun tallennetut polut. 
+Käyttäjän on luotava itselleen tunnus palveluun voidakseen ladata GPS-trackejaan. Käyttäjä kirjautuu tunnuksillaan 
+palveluun, jossa hän voi ladata GPS-trackeja syöttämällä haluamansa gpx-tiedoston lomakemuotoiseen kenttään. Kun 
+tiedosto on ladattu palveluun, esitetään käyttäjän reitti taustakartalla tai ilmakuvalla. Käyttäjä jakaa reitin 
+haluamiinsa osiin, jotka tarkoittavat kulkukelpoisuudeltaan erilaisia polun pätkiä, ja valitsee kullekin osalle 
+kulkukelpoisuusluokan alasvetovalikosta tai kirjoittamalla itse luokittelun. Tallennettuaan luokittelut voi 
+käyttäjä tarkastella lataamiaan polkuja kartalla, jolla näkyvät kaikki palveluun tallennetut polut. 
 (Digitoiko käyttäjä polut?)
 
 
 Palveluun tallennettujen polkujen tarkastelu (Vaatiiko aina kirjautumisen?)
 
-Palvelussa voi tarkastella karttaa, jolla näkyvät kaikki palveluun tallennetut polut. Polkujen luokittelu selviää joko erilaisista polkujen esittämistavoista, kuten väreistä ja symboleista, tai viemällä hiiren polun päälle, jolloin ilmestyy lisää tietoa polusta. Käyttäjä voi suunnitella palvelun avulla juoksureittinsä ja valita juostavakseen sellaisia polkuja, joiden kulkukelpoisuus täyttää hänen vaatimuksensa.
+Palvelussa voi tarkastella karttaa, jolla näkyvät kaikki palveluun tallennetut polut. Polkujen luokittelu selviää 
+joko erilaisista polkujen esittämistavoista, kuten väreistä ja symboleista, tai viemällä hiiren polun päälle, 
+jolloin ilmestyy lisää tietoa polusta. Käyttäjä voi suunnitella palvelun avulla juoksureittinsä ja valita 
+juostavakseen sellaisia polkuja, joiden kulkukelpoisuus täyttää hänen vaatimuksensa.
 
-Mahdollisesti palvelussa voisi tarkastella kokonaisia reittejä, joita käyttäjät ovat tallentaneet ja joille on annettu nimi ym. tietoa.
+Mahdollisesti palvelussa voisi tarkastella kokonaisia reittejä, joita käyttäjät ovat tallentaneet ja joille on 
+annettu nimi ym. tietoa.
 
 
 Palveluun jo tallennetun polun tallentaminen uudelleen
 
-Jos käyttäjä on tallentamassa palveluun sellaista polkua, jonka joku palvelun käyttäjä on jo tallentanut, näkee käyttäjä kartalla sekä oman reittinsä että jo tallennetun polun. Näiden perusteella käyttäjä voi digitoida polun uudelleen ja siten parantaa palveluun tallennettavaa polkua. Käyttäjä näkee myös polulle jo annetun kulkukelpoisuusluokan, jota hän voi tarvittaessa muuttaa. Palveluun jää kuitenkin tieto kaikista polulle annetuista luokitteluista.
+Jos käyttäjä on tallentamassa palveluun sellaista polkua, jonka joku palvelun käyttäjä on jo tallentanut, näkee 
+käyttäjä kartalla sekä oman reittinsä että jo tallennetun polun. Näiden perusteella käyttäjä voi digitoida polun 
+uudelleen ja siten parantaa palveluun tallennettavaa polkua. Käyttäjä näkee myös polulle jo annetun kulkukelpoisuusluokan, 
+jota hän voi tarvittaessa muuttaa. Palveluun jää kuitenkin tieto kaikista polulle annetuista luokitteluista.
