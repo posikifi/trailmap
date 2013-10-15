@@ -1,0 +1,6 @@
+Trackin lukuscripti: (php) 
+
+-GPX -datasta jokaisella pisteellä (wpt): lon, lat, ele, time. 
+-Scripti lukee pisteet läpi ja luo näiden tiedoista trackin. 
+-Scripti vie trackin tietokantaan/taulukkoon (postGIS). Taulukko sisältää trackID, userID, pisteet.
+-Kun tracki luettu ja viety tietokantaan -> scripti päättyy.  
