@@ -11,8 +11,10 @@ Ubuntu Server 12.04 LTS
 
 Apache 2.2.22
 
-Postgresql 9.1
-PostGIS 2.0
+Postgresql 9.3
+PostGIS 2.1
+(https://wiki.postgresql.org/wiki/Apt)
+
 Geoserver 2.4
 
 PHP 5.5.4
