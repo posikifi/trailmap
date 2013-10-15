@@ -18,3 +18,8 @@ Geoserver 2.4
 PHP 5.5.4
 
 Drupal 7.2.3 (käyttäjien hallinta)
+
+
+PHP Kirjastot:
+php5-pgsql
+
