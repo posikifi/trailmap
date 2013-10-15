@@ -1,0 +1,20 @@
+Käyttöliittymä:
+
+jQuery 2.0.3
+OpenLayers 2.13.1
+Twitter Bootstrap 3.0.0
+
+
+Palvelin:
+
+Ubuntu Server 13.04 
+
+Apache 2.4.6
+
+Postgresql 9.3
+PostGIS 2.1
+Geoserver 2.4
+
+PHP 5.5.4
+
+Drupal 7.2.3 (käyttäjien hallinta)
