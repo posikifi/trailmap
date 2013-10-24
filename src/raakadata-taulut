@@ -1,0 +1,48 @@
+--luodaan eri skeemat, helpottaa datan dumppausta 
+--kun kaikki ei ole publicissa, ei tarvii siirtää coordsys ym tauluja
+
+CREATE SCHEMA "raw"
+       AUTHORIZATION trailmap;
+COMMENT ON SCHEMA "raw"
+  IS 'raakadatan skeema';
+
+ CREATE SCHEMA trail
+       AUTHORIZATION trailmap;
+COMMENT ON SCHEMA trail
+  IS 'polkudatan skeema';
+
+-- Table: "raw".trkpt
+
+-- DROP TABLE "raw".trkpt;
+
+CREATE TABLE "raw".trkpt
+(
+  id integer NOT NULL,
+  geom geometry,
+  "time" timestamp without time zone,
+  z numeric,
+  track_id integer,
+  CONSTRAINT trkpt_pk PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "raw".trkpt
+  OWNER TO trailmap;
+
+ -- Table: "raw".tracks
+
+-- DROP TABLE "raw".tracks; 
+  
+  CREATE TABLE "raw".tracks
+(
+  id integer NOT NULL,
+  geom geometry,
+  user text
+  CONSTRAINT tracks_pk PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "raw".tracks
+  OWNER TO trailmap;
