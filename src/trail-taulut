@@ -1,0 +1,38 @@
+ --luodaan eri skeemat, helpottaa datan dumppausta 
+--kun kaikki ei ole publicissa, ei tarvii siirtää coordsys ym tauluja
+ CREATE SCHEMA trail
+       AUTHORIZATION trailmap;
+COMMENT ON SCHEMA trail
+  IS 'polkudatan skeema';
+-- table segment
+  
+CREATE TABLE "trail".segment
+(
+  id integer NOT NULL,
+  geom geometry,
+  len numeric,
+  alusta integer,
+  selkeys integer,
+  epatas integer,
+  CONSTRAINT segment_pk PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "trail".segment
+  OWNER TO trailmap;
+--table poi
+  
+CREATE TABLE "trail".poi
+(
+  id integer NOT NULL,
+  geom geometry,
+  type integer,
+  selite text,
+  CONSTRAINT poi_pk PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "trail".poi
+  OWNER TO trailmap;  
