@@ -6,11 +6,6 @@ CREATE SCHEMA "raw"
 COMMENT ON SCHEMA "raw"
   IS 'raakadatan skeema';
 
- CREATE SCHEMA trail
-       AUTHORIZATION trailmap;
-COMMENT ON SCHEMA trail
-  IS 'polkudatan skeema';
-
 -- Table: "raw".trkpt
 
 -- DROP TABLE "raw".trkpt;
