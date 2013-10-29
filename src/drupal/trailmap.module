@@ -1,0 +1,49 @@
+<?php
+/**
+ * @file
+ * Trailmapin ytimen toiminnallisuus
+ */
+
+
+function trailmap_help($path,$arg) {
+    switch ($path) {
+        case 'admin/help#trailmap':
+            return '<p>' . t('Trailmap toiminnallisuus') . '</p>';
+            break;
+    }
+}
+
+/*
+function trailmap_node_info() {
+    return Array(
+            'upload' => Array(
+                'name' => t('Jäljen lataus'),
+                'base' => 'trailmap',
+                'description' => t('GPX jäljen lataus Trailmapiin')
+                ),
+            'view' => Array(
+                'name' => t('Polkujen katselu'),
+                'base' => 'trailmap',
+                'description' => t('Polkujen katselu')
+                )
+        );
+}
+*/
+
+function trailmap_menu() {
+    $items['trailmap'] = Array(
+            'page callback' => 'trailmap_front_view',
+            'access arguments' => array('access content'),
+            'file'=> 'trailmap.front.inc.php',
+            'title'=>t('Trailmap'),
+            );
+
+    $items['trailmap/upload'] = Array(
+            'page callback' => 'trailmap_upload_view',
+            'access arguments' => array('access content'),
+            'file'=> 'trailmap.upload.inc.php',
+            'title'=>t('Jälkien lataus')
+            );
+
+    return $items;
+}
