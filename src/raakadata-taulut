@@ -44,3 +44,5 @@ ALTER TABLE "raw".tracks
   OWNER TO trailmap;
 
 CREATE INDEX tracks_six ON "raw".tracks USING GIST (geom); 
+SELECT UpdateGeometrySRID('raw', 'trkpt', 'geom', 4326);
+SELECT UpdateGeometrySRID('raw', 'tracks', 'geom', 3067);
