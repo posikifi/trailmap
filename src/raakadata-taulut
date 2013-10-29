@@ -34,7 +34,7 @@ CREATE INDEX trkpt_six ON "raw".trkpt USING GIST (geom);
 (
   id integer NOT NULL,
   geom geometry,
-  user text
+  user_id text,
   CONSTRAINT tracks_pk PRIMARY KEY (id)
 )
 WITH (
