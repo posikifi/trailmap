@@ -25,6 +25,7 @@ WITH (
 ALTER TABLE "raw".trkpt
   OWNER TO trailmap;
 
+CREATE INDEX trkpt_six ON "raw".trkpt USING GIST (geom); 
  -- Table: "raw".tracks
 
 -- DROP TABLE "raw".tracks; 
@@ -41,3 +42,5 @@ WITH (
 );
 ALTER TABLE "raw".tracks
   OWNER TO trailmap;
+
+CREATE INDEX tracks_six ON "raw".tracks USING GIST (geom); 
