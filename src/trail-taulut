@@ -21,7 +21,10 @@ WITH (
 );
 ALTER TABLE "trail".segment
   OWNER TO trailmap;
+CREATE INDEX segment_six ON "trail".segment USING GIST (geom); 
+
 --table poi
+ 
   
 CREATE TABLE "trail".poi
 (
@@ -36,3 +39,5 @@ WITH (
 );
 ALTER TABLE "trail".poi
   OWNER TO trailmap;  
+
+CREATE INDEX poi_six ON "trail".poi USING GIST (geom); 
