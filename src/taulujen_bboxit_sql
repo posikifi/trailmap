@@ -1,8 +1,8 @@
 --luodaan dummydataa, jolloin saadaan geoserverille tehtyä tasot (bbox, suomi)
 
-insert into raw.tracks values (1,ST_POINT(0,6600000),'dummy');
-insert into raw.tracks values (2,ST_POINT(740000,7800000),'dummy');
-insert into trail.segment values (1,ST_POINT(0,6600000));
-insert into trail.segment values (2,ST_POINT(740000,7800000));
-insert into trail.poi values (1,ST_POINT(0,6600000));
-insert into trail.poi values (2,ST_POINT(740000,7800000));
+insert into raw.tracks values (1,ST_GeomFromText('POINT(0 6600000)',3067));
+insert into raw.tracks values (2,ST_GeomFromText('POINT(740000 7800000)',3067));
+insert into trail.segment values (1,ST_GeomFromText('POINT(0 6600000)',3067));
+insert into trail.segment values (2,ST_GeomFromText('POINT(740000 7800000)',3067));
+insert into trail.poi values (1,ST_GeomFromText('POINT(0 6600000)',3067));
+insert into trail.poi values (2,ST_GeomFromText('POINT(740000 7800000)',3067));
