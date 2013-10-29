@@ -13,5 +13,8 @@ Mietteitä/kysymyksiä:
 
 Pohjana MML aineisto? 
 Miten javascriptillä haetaan tauluja & trackeja?
+-WFS pyynnöllä (user & track_id:n) perusteella haetaan track
+-käyttäjä digitoi trackien päälle (mm. snapping
+-wfs-t:llä digitoitu polku ominaisuuksineen kantaa
+-wms julkaisee kannasta polut rasteritiilinä
 Tarvitaanko graafista desktop -käyttöliittymää (ei web-pohjaista)? (Axure?)
-
