@@ -1,0 +1,17 @@
+Perustana OpenLayers 2.0
+
+Peruslinkkejä:
+OpenLayers - http://openlayers.org 
+OpenLayers API docs - http://dev.openlayers.org/apidocs 
+OpenLayers Examples - http://openlayers.org/dev/examples 
+
+Vektoreiden lisäys & muokkaus -toiminto: http://openlayers.org/dev/examples/vector-formats.html 
+
+
+
+Mietteitä/kysymyksiä:
+
+Pohjana MML aineisto? 
+Miten javascriptillä haetaan tauluja & trackeja?
+Tarvitaanko graafista desktop -käyttöliittymää (ei web-pohjaista)? (Axure?)
+
