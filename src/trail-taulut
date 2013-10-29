@@ -41,3 +41,7 @@ ALTER TABLE "trail".poi
   OWNER TO trailmap;  
 
 CREATE INDEX poi_six ON "trail".poi USING GIST (geom); 
+
+SELECT UpdateGeometrySRID('trail', 'segment', 'geom', 3067);
+SELECT UpdateGeometrySRID('trail', 'poi', 'geom', 3067);
+
