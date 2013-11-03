@@ -41,104 +41,24 @@ curl -v -u admin:larsmo -XGET http://localhost:8080/geoserver/rest/workspaces/tr
 curl -v -u admin:larsmo -XGET http://localhost:8080/geoserver/rest/workspaces/trailmap/datastores/raw_data.xml
 #------------------------------------------------
 #layerit
-#MITEN LUODAAN PARAMETRISOITU VIEW TRACKIA VARTEN?
 #rest
 #luonti vaatii dataa tauluun (bboxia varten)
 
-echo "
+#Polku+poi-kama
 
-<featureType>
-  <name>tracks</name>
-  <nativeName>tracks</nativeName>
-  <namespace>
-    <name>trailmap</name>
-    <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="alternate" href="http://localhost:8080/geoserver/rest/namespaces/trailmap.xml" type="application/xml"/>
-  </namespace>
-  <title>tracks</title>
-  <keywords>
-    <string>features</string>
-    <string>tracks</string>
-  </keywords>
-  <srs>EPSG:3067</srs>
-  <nativeBoundingBox>
-    <minx>0.0</minx>
-    <maxx>740000.0</maxx>
-    <miny>6600000.0</miny>
-    <maxy>7800000.0</maxy>
-  </nativeBoundingBox>
-  <latLonBoundingBox>
-    <minx>13.924325471001438</minx>
-    <maxx>33.356399008375384</maxx>
-    <miny>59.24179970856436</miny>
-    <maxy>70.30593043455778</maxy>
-    <crs>GEOGCS[&quot;WGS84(DD)&quot;,
-  DATUM[&quot;WGS84&quot;,
-    SPHEROID[&quot;WGS84&quot;, 6378137.0, 298.257223563]],
-  PRIMEM[&quot;Greenwich&quot;, 0.0],
-  UNIT[&quot;degree&quot;, 0.017453292519943295],
-  AXIS[&quot;Geodetic longitude&quot;, EAST],
-  AXIS[&quot;Geodetic latitude&quot;, NORTH]]</crs>
-  </latLonBoundingBox>
-  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
-  <enabled>true</enabled>
-  <metadata>
-    <entry key="cachingEnabled">false</entry>
-    <entry key="JDBC_VIRTUAL_TABLE">
-      <virtualTable>
-        <name>tracks</name>
-        <sql>select * from raw.tracks where user_id=&apos;%this_user%&apos;</sql>
-        <escapeSql>false</escapeSql>
-        <parameter>
-          <name>this_user</name>
-          <regexpValidator>^[\w\d\s]+$</regexpValidator>
-        </parameter>
-      </virtualTable>
-    </entry>
-  </metadata>
-  <store class="dataStore">
-    <name>raw_data</name>
-    <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="alternate" href="http://localhost:8080/geoserver/rest/workspaces/trailmap/datastores/raw_data.xml" type="application/xml"/>
-  </store>
-  <maxFeatures>0</maxFeatures>
-  <numDecimals>0</numDecimals>
-  <attributes>
-    <attribute>
-      <name>id</name>
-      <minOccurs>1</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>false</nillable>
-      <binding>java.lang.Integer</binding>
-    </attribute>
-    <attribute>
-      <name>geom</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>com.vividsolutions.jts.geom.Geometry</binding>
-    </attribute>
-    <attribute>
-      <name>user_id</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.String</binding>
-    </attribute>
-  </attributes>
-</featureType>">>tracks_taulu.xml
-
-
-#mtk-taulut luomatta!
-#luo track_taulu.xml restilla
 curl -v -u admin:larsmo -XPOST -H "Content-type: text/xml"  -d "<featureType><name>segment</name></featureType>"  http://localhost:8080/geoserver/rest/workspaces/trailmap/datastores/trail_data/featuretypes
 curl -v -u admin:larsmo -XPOST -H "Content-type: text/xml"  -d "<featureType><name>poi</name></featureType>"  http://localhost:8080/geoserver/rest/workspaces/trailmap/datastores/trail_data/featuretypes
+
+#MTK:T
 #curl -v -u admin:larsmo -XPOST -H "Content-type: text/xml"  -d "<featureType><name>mtk_area</name></featureType>"  http://localhost:8080/geoserver/rest/workspaces/trailmap/datastores/trail_data/featuretypes
 #curl -v -u admin:larsmo -XPOST -H "Content-type: text/xml"  -d "<featureType><name>mtk_line</name></featureType>"  http://localhost:8080/geoserver/rest/workspaces/trailmap/datastores/trail_data/featuretypes
+
+#Raakapointseja ei tarvii julkaista
+#Tracks-taulu julkaistaan webbikäyttiksen kautta, erilliset ohjeet, nimi tracks_user
 
 #---------------------------------------------------
 #stylet
 #luodaan echolla sld
-
-#ONKO SLD:n paikkana kansio jossa ajetaan vai data_dir
 
 echo "<?xml version="1.0" encoding="ISO-8859-1"?>
 <StyledLayerDescriptor version="1.0.0" 
@@ -165,21 +85,21 @@ echo "<?xml version="1.0" encoding="ISO-8859-1"?>
   </NamedLayer>
 </StyledLayerDescriptor>">>track.sld
 
-echo "
+#echo "
 #paste poi.sld
-">>poi.sld
+#">>poi.sld
 
-echo "
+#echo "
 #paste trail.sld
-">>trail.sld
+#">>trail.sld
 
-echo "
+#echo "
 #paste mtk_area.sld
-">>mtk_area.sld
+#">>mtk_area.sld
 
-echo "
+#echo "
 #paste mtk_line.sld
-">>mtk_line.sld
+#">>mtk_line.sld
 
 # HUOM seuraava kysyy sudon salasanan!
 sudo mv *.sld /var/lib/tomcat7/webapps/geoserver/data/styles/
@@ -187,18 +107,18 @@ sudo mv *.sld /var/lib/tomcat7/webapps/geoserver/data/styles/
 #rest
 #stylet geoserveriin
 curl -v -u admin:larsmo -XPOST -H "Content-type: text/xml"  -d "<style><name>track_style</name><filename>track.sld</filename></style>"  http://localhost:8080/geoserver/rest/styles
-curl -v -u admin:larsmo -XPOST -H "Content-type: text/xml"  -d "<style><name>trail_style</name><filename>trail.sld</filename></style>"  http://localhost:8080/geoserver/rest/styles
-curl -v -u admin:larsmo -XPOST -H "Content-type: text/xml"  -d "<style><name>poi_style</name><filename>poi.sld</filename></style>"  http://localhost:8080/geoserver/rest/styles
-curl -v -u admin:larsmo -XPOST -H "Content-type: text/xml"  -d "<style><name>mtk_a_style</name><filename>mtk_area.sld</filename></style>"  http://localhost:8080/geoserver/rest/styles
-curl -v -u admin:larsmo -XPOST -H "Content-type: text/xml"  -d "<style><name>mtk_l_style</name><filename>mtk_line.sld</filename></style>"  http://localhost:8080/geoserver/rest/styles
+#curl -v -u admin:larsmo -XPOST -H "Content-type: text/xml"  -d "<style><name>trail_style</name><filename>trail.sld</filename></style>"  http://localhost:8080/geoserver/rest/styles
+#curl -v -u admin:larsmo -XPOST -H "Content-type: text/xml"  -d "<style><name>poi_style</name><filename>poi.sld</filename></style>"  http://localhost:8080/geoserver/rest/styles
+#curl -v -u admin:larsmo -XPOST -H "Content-type: text/xml"  -d "<style><name>mtk_a_style</name><filename>mtk_area.sld</filename></style>"  http://localhost:8080/geoserver/rest/styles
+#curl -v -u admin:larsmo -XPOST -H "Content-type: text/xml"  -d "<style><name>mtk_l_style</name><filename>mtk_line.sld</filename></style>"  http://localhost:8080/geoserver/rest/styles
 #------------------
 #rest
 #tasoille uudet stylet
-curl -v -u admin:larsmo -XPUT -H "Content-type: text/xml"  -d "<layer><defaultStyle><name>track_style</name></defaultStyle></layer>"  http://localhost:8080/geoserver/rest/layers/trailmap:tracks
-curl -v -u admin:larsmo -XPUT -H "Content-type: text/xml"  -d "<layer><defaultStyle><name>trail_style</name></defaultStyle></layer>"  http://localhost:8080/geoserver/rest/layers/trailmap:segment
-curl -v -u admin:larsmo -XPUT -H "Content-type: text/xml"  -d "<layer><defaultStyle><name>poi_style</name></defaultStyle></layer>"  http://localhost:8080/geoserver/rest/layers/trailmap:poi
-curl -v -u admin:larsmo -XPUT -H "Content-type: text/xml"  -d "<layer><defaultStyle><name>mtk_a_style</name></defaultStyle></layer>"  http://localhost:8080/geoserver/rest/layers/trailmap:mtk_area
-curl -v -u admin:larsmo -XPUT -H "Content-type: text/xml"  -d "<layer><defaultStyle><name>mtk_l_style</name></defaultStyle></layer>"  http://localhost:8080/geoserver/rest/layers/trailmap:mtk_line
+curl -v -u admin:larsmo -XPUT -H "Content-type: text/xml"  -d "<layer><defaultStyle><name>track_style</name></defaultStyle></layer>"  http://localhost:8080/geoserver/rest/layers/trailmap:tracks_user
+#curl -v -u admin:larsmo -XPUT -H "Content-type: text/xml"  -d "<layer><defaultStyle><name>trail_style</name></defaultStyle></layer>"  http://localhost:8080/geoserver/rest/layers/trailmap:segment
+#curl -v -u admin:larsmo -XPUT -H "Content-type: text/xml"  -d "<layer><defaultStyle><name>poi_style</name></defaultStyle></layer>"  http://localhost:8080/geoserver/rest/layers/trailmap:poi
+#curl -v -u admin:larsmo -XPUT -H "Content-type: text/xml"  -d "<layer><defaultStyle><name>mtk_a_style</name></defaultStyle></layer>"  http://localhost:8080/geoserver/rest/layers/trailmap:mtk_area
+#curl -v -u admin:larsmo -XPUT -H "Content-type: text/xml"  -d "<layer><defaultStyle><name>mtk_l_style</name></defaultStyle></layer>"  http://localhost:8080/geoserver/rest/layers/trailmap:mtk_line
 
 #rest
 #grouppaa mtk:t, poit ja segmentit lopulliseksi kartaksi
