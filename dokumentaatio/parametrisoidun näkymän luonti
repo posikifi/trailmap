@@ -1,0 +1,16 @@
+-luodaan uusi layer raw_data storeen
+-vaihtoehto "Configure new sql view"
+
+-View Name: tracks_user
+-SQL statement: select * from raw.tracks where user_id='%this_user%'
+-klikkaa Guess parameters from SQL 
+-refresh attributes
+-SRID: 3067
+
+-save
+
+seuraavalla sivulla:
+-declared SRS: EPSG:3067
+-compute from native bounds
+
+save
