@@ -12,7 +12,7 @@ COMMENT ON SCHEMA "raw"
 
 CREATE TABLE "raw".trkpt
 (
-  id integer NOT NULL,
+  id serial,
   geom geometry,
   "time" timestamp without time zone,
   z numeric,
@@ -32,7 +32,7 @@ CREATE INDEX trkpt_six ON "raw".trkpt USING GIST (geom);
   
   CREATE TABLE "raw".tracks
 (
-  id integer NOT NULL,
+  id serial,
   geom geometry,
   user_id text,
   CONSTRAINT tracks_pk PRIMARY KEY (id)
