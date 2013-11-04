@@ -32,7 +32,7 @@ function vieData($gpxtiedosto, $user)
 	}
 }
 
-vieData('Move_testi.gpx',124);
+//vieData('Move_testi.gpx',124);
 
 
 ?>
