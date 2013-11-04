@@ -28,7 +28,7 @@ function vieData($gpxtiedosto, $trackID, $user)
 	}
 	//muodostetaan linestring
 	$line = "LINESTRING (".implode(",",$pisteet).")";
-	$query = "INSERT INTO track (user,geom) VALUES($1, ST_GeomFromText($2,4326))";
+	$query = "INSERT INTO track (user_id,geom) VALUES($1, ST_GeomFromText($2,4326))";
 	pg_prepare($con, "valmistelu", $query) or die ("Cannot prepare statement\n");
 	pg_execute($con, "valmistelu", array($user, $line)) or die ("Cannot execute statement\n");
 	
