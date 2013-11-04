@@ -3,11 +3,11 @@ function vieData($gpxtiedosto, $user)
 {
 	$db = new PDO('pgsql:host=localhost;dbname=trailmap_gis', 'trailmap', 'luoto');
 	
-	$db->exec("SELECT nextval('tracks.id') FROM raw.tracks");
-	$trackID = $db->fetch();
+	$dbs = $db->query("SELECT max(id)+1 FROM raw.tracks");
+	$trackID = $dbs->fetch();
 	$trackID = $trackID[0];
 	
-	$sth = $db->prepare("INSERT INTO trkpt (time,z,track_id,geom) VALUES(?, ?, ?, ST_SetSRID(ST_Point(?,?),4326))");
+	$sth = $db->prepare("INSERT INTO raw.trkpt (time,z,track_id,geom) VALUES(?, ?, ?, ST_SetSRID(ST_Point(?,?),4326))");
 	
 	
 	
@@ -32,6 +32,7 @@ function vieData($gpxtiedosto, $user)
 	}
 }
 
+vieData('Move_testi.gpx',124);
 
 
 ?>
