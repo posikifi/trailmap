@@ -17,15 +17,15 @@
 		  padding-top:50px;
 	  }
 	  #lataaDiv{
-		height: 45px;
+		height: 125px;
 	  	display:none;
 	  }
 	  #POIDiv{
-		height: 45px;
+		height: 50px;
 	  	display:none;
 	  }
 	  #polkuDiv{
-		height: 45px;
+		height: 50px;
 	  	display:none;
 	  }
     </style>
@@ -63,12 +63,108 @@
 	        </div>
 	      </div>
 	<div class="nakyma">
-	<div id="lataaDiv"><p>lataa</p></div>
-	<div id="polkuDiv">
-	<button type="button" class="btn btn-primary">Tallenna</button>
-		
-	</div>
-	<div id="POIDiv"><p>poi</p></div>
+
+       <div id="lataaDiv">
+        <form action="upload_file.php" method="post"
+                enctype="multipart/form-data">
+                <label for="file">Lataa GPX-tiedosto</label>
+                <input type="file" name="file" id="file" class="btn btn-default"> <br>
+                <input type="submit" name="submit" class="btn btn-primary" value="Lataa tiedosto">
+        </form>
+        </div>
+
+
+         <div id="polkuDiv">
+<form action="lataa_polku.php" method="post" enctype="">
+<label for="polku">Polku:</label>
+<!-- http://stackoverflow.com/questions/13763176/multiple-grouped-dropdown-buttons-in-a-row-with-twitter-bootstrap
+sivulla css tweakit, saako fiksattua napit yhteen?
+ -->
+   <div class="btn-group"> <!-- group container for buttons merging -->
+
+       <div class="btn btn-group">
+        <a class="btn btn-default" href="#">
+        Piirr&auml; polku
+        </a>
+        </div>
+
+        <div class="btn btn-group">  <!-- button and dropdown group in one -->
+            <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+               Alusta
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+       <li><a href="#">Kivikko</a></li>
+        <li><a href="#">Suo</a></li>
+        <li><a href="#">Kallio</a></li>
+         <li><a href="#">Mets&auml;</a></li>
+         <li><a href="#">Niitty</a></li>
+    </ul>
+        </div>
+        <div class="btn btn-group">
+            <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+                Kulkukelpoisuus
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+         <li><a href="#">1=Hidas</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+         <li><a href="#">4</a></li>
+         <li><a href="#">5=Nopea</a></li>
+                </ul>
+        </div>
+
+        <div class="btn btn-group">
+            <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+                Selkeys
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+         <li><a href="#">Heikko</a></li>
+        <li><a href="#">Selke&auml;</a></li>
+                </ul>
+        </div>
+       <div class="btn btn-group">
+
+         <input type="submit" name="submit" class="btn btn-default" value="Tallenna">
+        </div>
+        </div>
+        </form>
+        </div>
+
+      <div id="POIDiv">
+        <form action="tallenna_poi.php" method="post" enctype="multipart/form-data">
+        <label for="polku">POI:</label>
+        <div class="btn-group"> <!-- group container for buttons merging -->
+       <div class="btn btn-group">
+         <a class="btn btn-default" href="#">
+        Piirr&auml; POI-kohde
+        </a>
+        </div>
+        <div class="btn btn-group">  <!-- button and dropdown group in one -->
+            <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+               Selite
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+       <li><a href="#">Este</a></li>
+        <li><a href="#">Portaat</a></li>
+        <li><a href="#">Vesipiste</a></li>
+         <li><a href="#">WC</a></li>
+         <li><a href="#">P-Paikka</a></li>
+         <li><a href="#">Maisema</a></li>
+        <li><a href="#">Muu</a></li>
+        </ul>
+        </div>
+        <div class="btn btn-group">
+         <input type="submit" name="submit" class="btn btn-default" value="Tallenna">
+        </div>
+        </div>
+        </form>
+        </div>
+
+
     <div id="map" class="map"></div>
 	</div>
 	
