@@ -1,7 +1,13 @@
 <?php
 
+require 'gpx2db.php';
+
 function trailmap_upload_view() {
-  return drupal_get_form('upload_form');
+  if (user_access('upload gpx')) {
+    return drupal_get_form('upload_form');
+  } else {
+    return t('Et saa lähettää GPX trackejä');
+  }
 }
 
 function upload_form($form_state) {
@@ -19,41 +25,33 @@ function upload_form($form_state) {
 }
 
 function upload_form_validate($form, &$form_state) {
+  if (!user_access('upload gpx')) {
+    drupal_set_message(t('Et saa lähettää GPX trackejä'),'error');
+    return False;
+  }
     $file = file_save_upload('file', array(
-    'file_validate_extensions' => array('gpx'), // Validate extensions.
-  ),NULL,FILE_EXISTS_REPLACE);
-  // If the file passed validation:
+    'file_validate_extensions' => array('gpx'),),NULL,FILE_EXISTS_REPLACE);
   if ($file) {
-    // Move the file, into the Drupal file system
     $form_state['storage']['file'] = $file;
-    /*
-    if ($file = file_move($file, 'public://gpx_tracks')) {
-      // Save the file for use in the submit handler.
-      
-    }
-
-    else {
-      form_set_error('file', t('Failed to write the uploaded file to the site\'s file folder.'));
-    }
-    */
   }
   else {
     form_set_error('file', t('No file was uploaded.'));
   } 
 }
 
-// Adds a submit handler/function to our form to send a successful 
-// completion message to the screen.
-
 
 function upload_form_submit($form, &$form_state) {
+  if (!user_access('upload gpx')) {
+    drupal_set_message(t('Et saa lähettää GPX trackejä'),'error');
+    return False;
+  }
+
+  global $user;
   $file = $form_state['storage']['file'];
-    debug($file);  
-  // Set a response to the user.
-  drupal_set_message(t('The form has been submitted and the image has been saved, filename: @filename.', array('@filename' => $file->filename)));
+
   $path = drupal_realpath($file->destination);
-  debug($path);
-  debug(file_get_contents($path));
-  debug(file_get_contents($file->destination));
+
+  vieData($path,$user->uid);
+  drupal_set_message(t('Tracking @filename lähetys onnistui!', array('@filename' => $file->filename)));
   file_delete($file);
 }

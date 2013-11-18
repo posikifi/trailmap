@@ -45,5 +45,32 @@ function trailmap_menu() {
             'title'=>t('Jälkien lataus')
             );
 
+    $items['trailmap/me'] = Array(
+            'page callback' => 'trailmap_me_view',
+            'access arguments' => array('access content'),
+            'file'=> 'trailmap.me.inc.php',
+            'title'=>t('Omat tiedot')
+            );
+
+    $items['trailmap/tracks/%/delete'] = Array(
+            'page callback' => 'trailmap_track_delete',
+            'access arguments' => array('access content'),
+            'file'=> 'trailmap.track_delete.inc.php',
+            'type' => MENU_CALLBACK,
+            'title' => 'Delete track',
+            'page arguments' => array(2)
+            );
+
+
     return $items;
+}
+
+
+function trailmap_permission() {
+    return Array(
+        'upload gpx' => Array(
+                'title' => t('Lähettää GPX trackejä'),
+                'description' => t('Lähettää GPX trackejä Trailmapiin')
+            ),
+        );
 }
