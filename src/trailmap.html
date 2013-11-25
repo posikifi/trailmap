@@ -29,7 +29,8 @@
 	  	display:none;
 	  }
     </style>
-    <script src="http://ol3js.org/en/master/build/ol.js" type="text/javascript"></script>
+<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/proj4js-compressed.js"></script>
 	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
@@ -169,40 +170,58 @@ sivulla css tweakit, saako fiksattua napit yhteen?
 	</div>
 	
     <script type="text/javascript">
-	var layers = [
-	  new ol.layer.Tile({
-	    source: new ol.source.TileWMS({
-	      attributions: [new ol.Attribution({
-	        html: 'EI kukaan'
-	      })],
-	      crossOrigin: 'anonymous',
-	      params: {
-	        'LAYERS': 'peruskartta',
-	        'FORMAT': 'image/png'
-	      },
-	      url: 'http://tiles.kartat.kapsi.fi/peruskartta?'
-	    })
-	  })
-	];
+Proj4js.defs["EPSG:3067"] = "+proj=utm +zone=35 +ellps=GRS80 +units=m +no_defs";
 
-	// A minimal projection object is configured with only the SRS code and the map
-	// units. No client side coordinate transforms are possible with such a
-	// projection object.
-	var projection = new ol.proj.Projection({
-	  code: 'EPSG:3067',
-	  units: ol.proj.Units.METERS
-	});
+    window.onload = function() {
+        var options = { controls: [
+            new OpenLayers.Control.Navigation(),
+            new OpenLayers.Control.KeyboardDefaults(),
+            new OpenLayers.Control.Zoom(),
+//			new OpenLayers.Control.Scale(),
+            new OpenLayers.Control.Attribution(),
+            new OpenLayers.Control.LayerSwitcher( {title: 'Switch/add/remove layers'} )
+        ]};
+        var map = new OpenLayers.Map('map', options);
+        map.projection = "EPSG:3067";
+        map.displayProjection = new OpenLayers.Projection("EPSG:4326");
+        map.maxExtent = new OpenLayers.Bounds(20000,6570000,788000,7818000);
+        map.resolutions = [1800,900,450,225,120,50,25,10,4.5,3,2,1,0.5];
+        map.tileSize = new OpenLayers.Size(200, 200);
+        var kapsi = new OpenLayers.Layer.WMS( "Peruskartta",
+            "http://tiles.kartat.kapsi.fi/peruskartta?", {layers: 'peruskartta'} );
+        map.addLayer(kapsi);
+        kapsi.attribution = 'MML aineistoa';
 
-	var map = new ol.Map({
-	  layers: layers,
-	  renderers: ol.RendererHints.createFromQueryData(),
-	  target: 'map',
-	  view: new ol.View2D({
-	    center: [385611.74491121626, 6671748.05455792],
-	    projection: projection,
-	    zoom: 9
-	  })
-	});
+//local geoserverin osoite ja polut:
+		var trailmap_gs = "http://localhost:8080/geoserver/trailmap/wms?"
+//		var trails = new OpenLayers.Layer.WMS( "Trails",
+//			trailmap_gs, {layers: 'segment'} );
+//		map.addLayer(trails);
+
+
+// kaikenmoisia nappuloita:
+ //   var panel = new OpenLayers.Control.Panel();
+ //      panel.addControls([
+ //          new OpenLayers.Control.Button({
+ //              displayClass: "helpButton", trigger: function() {alert('help')}, title: 'Help'
+ //          })
+//        ]);
+//        map.addControl(panel);
+//        map.addControl(new OpenLayers.Control.MousePosition( {id: "ll_mouse", formatOutput: formatLonlats} ));
+//        map.addControl(new OpenLayers.Control.MousePosition( {id: "utm_mouse", prefix: "UTM ", displayProjection: map.baseLayer.projection, numDigits: 0} ));
+        var lonlat = new OpenLayers.LonLat(24.6,60.3);
+        lonlat.transform(map.displayProjection, map.baseLayer.projection);
+        map.setCenter(lonlat, 9);
+
+        function formatLonlats(lonLat) {
+            var lat = lonLat.lat;
+            var long = lonLat.lon;
+				var ns = OpenLayers.Util.getFormattedLonLat(lat);
+            var ew = OpenLayers.Util.getFormattedLonLat(long,'lon');
+            return ns + ', ' + ew + ' (' + (Math.round(lat * 10000) / 10000) + ', ' + (Math.round(long * 10000) / 10000) + ')';
+        }
+    }
+  // Karttaskriptin loppu 
 	
 	$('#polku').click(function(){
 		$('#polkuDiv').toggle(duration=200);
