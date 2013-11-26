@@ -1,5 +1,5 @@
 <?php
 
-echo 'VITTU SAATANA PERKELE';
+echo 'VPS';
 
 ?>
