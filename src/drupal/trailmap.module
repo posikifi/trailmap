@@ -66,6 +66,19 @@ function trailmap_menu() {
 }
 
 
+function tailmap_preprocess_block(&$variables) {
+  $variables['template_files'][] = 'trailmap_front';
+}
+
+
+function trailmap_theme(){
+    return array(
+        'front' => array(
+            'template' => 'front'//name of template file, place test.tpl.php in your module
+        )
+    );
+}
+
 function trailmap_permission() {
     return Array(
         'upload gpx' => Array(
