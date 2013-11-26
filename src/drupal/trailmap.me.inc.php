@@ -2,6 +2,10 @@
 
 function trailmap_me_view() {
     global $user;
+    if (!user_is_logged_in()) {
+
+        return t('Et ole kirjautunut sisään');
+    }
     drupal_add_js('OpenLayers.js');
     //drupal_add_js('jquery.min.js');
     drupal_add_js('own_tracks.js');
