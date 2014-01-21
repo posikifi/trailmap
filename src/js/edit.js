@@ -40,8 +40,10 @@ $(function () {
     });
     var wgs = new OpenLayers.Projection("EPSG:4326");
 
-    var gphy = new OpenLayers.Layer.WMS( "MML",
-                    "http://tiles.kartat.kapsi.fi/peruskartta?", {layers: 'peruskartta'} );
+    var gphy = new OpenLayers.Layer.WMS("MML",
+        "http://tiles.kartat.kapsi.fi/peruskartta?", {
+            layers: 'peruskartta'
+        });
 
     var saveStrategy = new OpenLayers.Strategy.Save();
 
@@ -55,7 +57,7 @@ $(function () {
             featureType: "segment",
             featureNS: "trailmap",
             geometryName: "geom",
-            extractAttributes:true
+            extractAttributes: true
         }),
         styleMap: new OpenLayers.StyleMap({
             'default': new OpenLayers.Style({
@@ -86,18 +88,23 @@ $(function () {
         allowDepress: true
     });
 
-    snap = new OpenLayers.Control.Snapping({layer: wfs,edge:false,vertexTolerance:10,nodeTolerance:10});
+    snap = new OpenLayers.Control.Snapping({
+        layer: wfs,
+        edge: false,
+        vertexTolerance: 10,
+        nodeTolerance: 10
+    });
     map.addControl(snap);
     snap.activate();
-    
+
     // configure split agent
     split = new OpenLayers.Control.Split({
         layer: wfs,
         source: wfs,
-        deferDelete:true,
+        deferDelete: true,
         tolerance: 0.0001,
         eventListeners: {
-            aftersplit: function(event) {
+            aftersplit: function (event) {
                 flashFeatures(event.features);
             }
         }
@@ -115,12 +122,11 @@ $(function () {
 
     var edit = new OpenLayers.Control.ModifyFeature(wfs, {
         title: "Modify Feature",
-        displayClass: "olControlModifyFeature",
-        selectControl: new OpenLayers.Control.SelectFeature([wfs,])
+        displayClass: "olControlModifyFeature"
     });
 
 
-    wfs.events.register('beforefeaturemodified',wfs,function (e) {
+    wfs.events.register('beforefeaturemodified', wfs, function (e) {
         var attr = e.feature.attributes;
         $('#inp-sel').val(attr.selkeys);
         $('#inp-epa').val(attr.epatas);
@@ -129,7 +135,7 @@ $(function () {
         console.log('before');
         return true;
     });
-    wfs.events.register('afterfeaturemodified',wfs,function(e) {
+    wfs.events.register('afterfeaturemodified', wfs, function (e) {
         e.feature.attributes.selkeys = $('#inp-sel').val();
         e.feature.attributes.epatas = $('#inp-epa').val();
         e.feature.attributes.alusta = $('#inp-alu').val();
@@ -145,10 +151,11 @@ $(function () {
     var save = new OpenLayers.Control.Button({
         title: "Save Changes",
         trigger: function () {
+            edit.deactivate();
             if (edit.feature) {
-                console.log(edit.selectControl);
                 edit.selectControl.unselectAll();
             }
+
             saveStrategy.save();
         },
         displayClass: "olControlSaveFeatures"
@@ -164,7 +171,8 @@ $(function () {
     map.setCenter(center, 7);
     $('#attrform').hide();
 
-    $('#savebtn').click(function(e) {
+    $('#savebtn').click(function (e) {
+        //edit.deactivate();
         save.trigger();
     });
 
