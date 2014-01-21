@@ -38,6 +38,7 @@
             </div>
             <p class="navbar-text navbar-right">
                 <?php if (user_is_logged_in()): ?>
+                <a href="http://trailmap.hylly.org/trailmap/?q=trailmap/edit">Muokkaa polkuja</a>
 <?php echo t('Kirjautunut sisään käyttäjänä: ') . '<a href="http://trailmap.hylly.org/trailmap/?q=trailmap/me">' . $user->name . '</a> - <a href="http://trailmap.hylly.org/trailmap/?q=user/logout">' . t('Kirjaudu ulos') . '</a>';?>
 <?php else: ?>
 	<form class="form-inline navbar-right" role="form" action="/trailmap/?q=node&amp;destination=node" method="post" id="user-login-form" accept-charset="UTF-8">
@@ -79,53 +80,55 @@
 
 <script type="text/javascript">
 var layers = [
-new ol.layer.Tile({
-source: new ol.source.TileWMS({
-attributions: [new ol.Attribution({
-html: 'EI kukaan'
-})],
-queryable:false,
-crossOrigin: 'anonymous',
-params: {
-'LAYERS': 'peruskartta',
-'FORMAT': 'image/png',
-'queryable':false,
-},
-url: 'http://tiles.kartat.kapsi.fi/peruskartta?'
-})
-}),
-new ol.layer.Tile({
-                         source: new ol.source.TileWMS({
-                         url: '/geoserver/wms',
-                         params: {'LAYERS': 'trailmap:tracks', 'TILED': true}
-                         })
-                         })
+    new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            attributions: [new ol.Attribution({
+                html: 'EI kukaan'
+            })],
+            queryable: false,
+            crossOrigin: 'anonymous',
+            params: {
+                'LAYERS': 'peruskartta',
+                'FORMAT': 'image/png',
+                'queryable': false,
+            },
+            url: 'http://tiles.kartat.kapsi.fi/peruskartta?'
+        })
+    }),new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: '/geoserver/wms',
+            params: {
+                'LAYERS': 'trailmap:segment',
+                'TILED': true
+            }
+        })
+    })
 ];
 
 
 var projection = new ol.proj.Projection({
-code: 'EPSG:3067',
-units: ol.proj.Units.METERS
+    code: 'EPSG:3067',
+    units: ol.proj.Units.METERS
 });
 
 var map = new ol.Map({
-layers: layers,
-renderers: ol.RendererHints.createFromQueryData(),
-target: 'map',
-view: new ol.View2D({
-center: [450000.00, 7000000.0],
-projection: projection,
-zoom: 7
-})
+    layers: layers,
+    renderers: ol.RendererHints.createFromQueryData(),
+    target: 'map',
+    view: new ol.View2D({
+        center: [450000.00, 7000000.0],
+        projection: projection,
+        zoom: 7
+    })
 });
-map.on('singleclick', function(evt) {
+map.on('singleclick', function (evt) {
 
-map.getFeatureInfo({
-pixel: evt.getPixel(),
-success: function(featureInfoByLayer) {
-document.getElementById('info').innerHTML = featureInfoByLayer.join('');
-}
-});
+    map.getFeatureInfo({
+        pixel: evt.getPixel(),
+        success: function (featureInfoByLayer) {
+            document.getElementById('info').innerHTML = featureInfoByLayer.join('');
+        }
+    });
 });
 </script>
 </body>

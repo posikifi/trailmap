@@ -1,0 +1,84 @@
+<dataStore>
+  <name>raw_data</name>
+  <connectionParameters>
+    <host>localhost</host>
+    <port>5432</port>
+    <database>trailmap_gis</database>
+	<schema>raw</schema>
+    <user>trailmap</user>
+    <passwd>luoto</passwd>
+    <dbtype>postgis</dbtype>
+  </connectionParameters>
+</dataStore>
+<dataStore>
+  <name>raw_data</name>
+  <connectionParameters>
+    <host>localhost</host>
+    <port>5432</port>
+    <database>trailmap_gis</database>
+	<schema>raw</schema>
+    <user>trailmap</user>
+    <passwd>luoto</passwd>
+    <dbtype>postgis</dbtype>
+  </connectionParameters>
+</dataStore>
+<dataStore>
+  <name>raw_data</name>
+  <connectionParameters>
+    <host>localhost</host>
+    <port>5432</port>
+    <database>trailmap_gis</database>
+	<schema>raw</schema>
+    <user>trailmap</user>
+    <passwd>luoto</passwd>
+    <dbtype>postgis</dbtype>
+  </connectionParameters>
+</dataStore>
+<dataStore>
+  <name>raw_data</name>
+  <connectionParameters>
+    <host>localhost</host>
+    <port>5432</port>
+    <database>trailmap_gis</database>
+	<schema>raw</schema>
+    <user>trailmap</user>
+    <passwd>luoto</passwd>
+    <dbtype>postgis</dbtype>
+  </connectionParameters>
+</dataStore>
+<dataStore>
+  <name>raw_data</name>
+  <connectionParameters>
+    <host>localhost</host>
+    <port>5432</port>
+    <database>trailmap_gis</database>
+	<schema>raw</schema>
+    <user>trailmap</user>
+    <passwd>luoto</passwd>
+    <dbtype>postgis</dbtype>
+  </connectionParameters>
+</dataStore>
+<dataStore>
+  <name>raw_data</name>
+  <connectionParameters>
+    <host>localhost</host>
+    <port>5432</port>
+    <database>trailmap_gis</database>
+	<schema>raw</schema>
+    <user>trailmap</user>
+    <passwd>luoto</passwd>
+    <dbtype>postgis</dbtype>
+  </connectionParameters>
+</dataStore>
+<dataStore>
+  <name>raw_data</name>
+  <connectionParameters>
+    <host>localhost</host>
+    <port>5432</port>
+    <database>trailmap_gis</database>
+	<schema>raw</schema>
+    <user>trailmap</user>
+    <passwd>luoto</passwd>
+    <dbtype>postgis</dbtype>
+  </connectionParameters>
+</dataStore>

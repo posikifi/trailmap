@@ -61,6 +61,12 @@ function trailmap_menu() {
             'page arguments' => array(2)
             );
 
+    $items['trailmap/edit'] = Array(
+            'page callback' => 'trailmap_edit_view',
+            'access arguments' => array('access content'),
+            'file'=> 'trailmap.edit.inc.php',
+            'title'=>t('Muokkaa polkuja')
+            );
 
     return $items;
 }
@@ -74,7 +80,10 @@ function tailmap_preprocess_block(&$variables) {
 function trailmap_theme(){
     return array(
         'front' => array(
-            'template' => 'front'//name of template file, place test.tpl.php in your module
+            'template' => 'front'
+        ),
+        'edit' => array(
+            'template' => 'edit'
         )
     );
 }
@@ -84,6 +93,10 @@ function trailmap_permission() {
         'upload gpx' => Array(
                 'title' => t('Lähettää GPX trackejä'),
                 'description' => t('Lähettää GPX trackejä Trailmapiin')
+            ),
+        'edit trails' => Array(
+                'title' => t('Muokata polkuja'),
+                'description' => t('Muokata Trailmapin polkuja')
             ),
         );
 }
