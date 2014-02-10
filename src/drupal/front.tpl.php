@@ -53,7 +53,7 @@
 		<input type="hidden" name="form_id" value="user_login_block" />
 	  <button type="submit" class="btn btn-default form-submit" id="edit-submit" name="op" value="Log in" >Kirjaudu</button>
 	</form>
-	
+
 
 <?php endif;?>
 
@@ -65,7 +65,7 @@
 
 <div class="container">
 <div class="row">
-<div class="col-md-2">
+<div class="col-md-3">
 <div>
 <b>Lepuskin lenkki</b>
 <p>Pituus: 2.3km
@@ -74,16 +74,24 @@
 <div id="info">
 </div>
 </div>
-<div id="map" class="col-md-10"></div>
+<div id="map" class="col-md-9"></div>
 </div>
 </div>
 
 <script type="text/javascript">
+
+var segmentWMS = new ol.source.TileWMS({
+            url: '/geoserver/wms',
+            params: {
+                'LAYERS': 'trailmap:segment',
+                'TILED': true
+            }
+        });
 var layers = [
     new ol.layer.Tile({
         source: new ol.source.TileWMS({
             attributions: [new ol.Attribution({
-                html: 'EI kukaan'
+                html: 'MML / kartat.kapsi.fi'
             })],
             queryable: false,
             crossOrigin: 'anonymous',
@@ -92,42 +100,72 @@ var layers = [
                 'FORMAT': 'image/png',
                 'queryable': false,
             },
-            url: 'http://tiles.kartat.kapsi.fi/peruskartta?'
+            url: 'http://tiles.kartat.kapsi.fi/peruskartta?',
+			maxZoom: 3
         })
-    }),new ol.layer.Tile({
-        source: new ol.source.TileWMS({
-            url: '/geoserver/wms',
-            params: {
-                'LAYERS': 'trailmap:segment',
-                'TILED': true
-            }
-        })
-    })
+    }),/*
+    new ol.layer.Tile({
+	  name: 'TMS',
+      source: new ol.source.XYZ({
+        tileUrlFunction: function(coordinate) {
+          var z = coordinate.a;
+          var x = coordinate.x;
+          var y = (1 << z) - coordinate.y - 1;
+          return 'http://raspi.nopsa.dy.fi/tiili/'+z+'/'+x+'/'+y+'.png';
+      	  }
+    }),
+	minZoom: 14
+
+}),*/
+	new ol.layer.Tile({
+        source: segmentWMS
+     })
 ];
 
-
+//console.log(ol.proj.get('+proj=utm +zone=35 +ellps=GRS80 +units=m +no_defs'));
 var projection = new ol.proj.Projection({
     code: 'EPSG:3067',
-    units: ol.proj.Units.METERS
+    units: 'm'
 });
 
+var view = new ol.View2D({
+        center: [450000.00, 7000000.0],
+        projection: projection,
+        zoom: 7
+    });
 var map = new ol.Map({
     layers: layers,
     renderers: ol.RendererHints.createFromQueryData(),
     target: 'map',
-    view: new ol.View2D({
-        center: [450000.00, 7000000.0],
-        projection: projection,
-        zoom: 7
-    })
+    view: view
 });
 map.on('singleclick', function (evt) {
+      var url = segmentWMS.getGetFeatureInfoUrl(
+      evt.coordinate, view.getResolution(), view.getProjection(),
+      {'INFO_FORMAT': 'text/html'});
 
-    map.getFeatureInfo({
-        pixel: evt.getPixel(),
-        success: function (featureInfoByLayer) {
-            document.getElementById('info').innerHTML = featureInfoByLayer.join('');
+    $.get(url,function(d) {
+        $('#info').html(d);
+        /*
+        if (d.features.length > 0) {
+
+            var tbl = $('<table>');
+            var headrow = $('<tr>');
+            for (k in d.features[0].properties) {
+                headrow.append('<th>' + k + '</th>');
+            }
+            tbl.append(headrow);
+
+            for (var i = 0;i < d.features.length;i++) {
+                var row = $('<tr>');
+                for (k in d.features[i].properties) {
+                    row.append('<td>' + d.features[i].properties[k] + '</td>');
+                }
+                tbl.append(row);
+            }
+            $('#info').html(tbl);
         }
+        */
     });
 });
 </script>
