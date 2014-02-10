@@ -53,7 +53,7 @@ $(function () {
         protocol: new OpenLayers.Protocol.WFS({
             version: "1.1.0",
             srsName: "EPSG:900913",
-            url: "http://trailmap.hylly.org/geoserver/trailmap/wfs",
+            url: "http://trailmap.hylly.org/trailmap/mapproxy.php",
             featureType: "segment",
             featureNS: "trailmap",
             geometryName: "geom",
