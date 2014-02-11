@@ -19,13 +19,13 @@
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="http://trailmap.hylly.org/trailmap/edit.js?mxl277"></script>    
+<script type="text/javascript" src="http://trailmap.hylly.org/trailmap/edit.js?mxl277"></script>
     <title>Trailmap</title>
         <style>
         .customEditingToolbar {
             float: right;
             right: 0px;
-            height: 30px; 
+            height: 30px;
         }
         .customEditingToolbar div {
             float: right;
@@ -33,42 +33,42 @@
             width: 24px;
             height: 24px;
         }
-        .olControlNavigationItemActive { 
+        .olControlNavigationItemActive {
             background-image: url("theme/default/img/editing_tool_bar.png");
             background-repeat: no-repeat;
-            background-position: -103px -23px; 
+            background-position: -103px -23px;
         }
-        .olControlNavigationItemInactive { 
+        .olControlNavigationItemInactive {
             background-image: url("theme/default/img/editing_tool_bar.png");
             background-repeat: no-repeat;
-            background-position: -103px -0px; 
+            background-position: -103px -0px;
         }
-        .olControlDrawFeaturePolygonItemInactive { 
+        .olControlDrawFeaturePolygonItemInactive {
             background-image: url("theme/default/img/editing_tool_bar.png");
             background-repeat: no-repeat;
-            background-position: -26px 0px; 
+            background-position: -26px 0px;
         }
-        .olControlDrawFeaturePolygonItemActive { 
+        .olControlDrawFeaturePolygonItemActive {
             background-image: url("theme/default/img/editing_tool_bar.png");
             background-repeat: no-repeat;
-            background-position: -26px -23px ;                                                                   
+            background-position: -26px -23px ;
         }
-        .olControlModifyFeatureItemActive { 
+        .olControlModifyFeatureItemActive {
             background-image: url(theme/default/img/move_feature_on.png);
             background-repeat: no-repeat;
             background-position: 0px 1px;
         }
-        .olControlModifyFeatureItemInactive { 
+        .olControlModifyFeatureItemInactive {
             background-image: url(theme/default/img/move_feature_off.png);
             background-repeat: no-repeat;
             background-position: 0px 1px;
         }
-        .olControlDeleteFeatureItemActive { 
+        .olControlDeleteFeatureItemActive {
             background-image: url(theme/default/img/remove_point_on.png);
             background-repeat: no-repeat;
             background-position: 0px 1px;
         }
-        .olControlDeleteFeatureItemInactive { 
+        .olControlDeleteFeatureItemInactive {
             background-image: url(theme/default/img/remove_point_off.png);
             background-repeat: no-repeat;
             background-position: 0px 1px;
@@ -89,34 +89,40 @@
                 </button>
                 <a class="navbar-brand" href="#">Trailmap</a>
             </div>
-            <p class="navbar-text navbar-right">
+            <div class="navbar-text navbar-right">
                 <?php if (user_is_logged_in()): ?>
                 <a href="http://trailmap.hylly.org/trailmap/?q=trailmap/">Takaisin reittikarttaan</a>
 <?php echo t('Kirjautunut sisään käyttäjänä: ') . '<a href="http://trailmap.hylly.org/trailmap/?q=trailmap/me">' . $user->name . '</a> - <a href="http://trailmap.hylly.org/trailmap/?q=user/logout">' . t('Kirjaudu ulos') . '</a>';?>
 <?php else: ?>
-    <form class="form-inline navbar-right" role="form" action="/trailmap/?q=node&amp;destination=node" method="post" id="user-login-form" accept-charset="UTF-8">
-      <div class="form-group">
-        <label class="sr-only" for="edit-name">K&auml;tt&auml;j&auml;tunnus</label>
-        <input type="text" class="form-control" id="edit-name" placeholder="Tunnus">
-      </div>
-      <div class="form-group">
-        <label class="sr-only" for="edit-pass">Password</label>
-        <input type="password" class="form-control" id="edit-pass" placeholder="Salasana">
-      </div>
-        <input type="hidden" name="form_id" value="user_login_block" />
-      <button type="submit" class="btn btn-default form-submit" id="edit-submit" name="op" value="Log in" >Kirjaudu</button>
-    </form>
-    
+<?php
+echo drupal_render(drupal_get_form('user_login_block'));
+
+?>
+
 
 <?php endif;?>
 
-</p>
+</div>
 <!--/.nav-collapse -->
 </div>
 </div>
 </div>
 
 <div class="container">
+<div class="row">
+<div class="col-md-2">
+&nbsp;
+</div>
+<div class="col-md-9"></div>
+<div class="btn-group">
+  <button type="button" class="btn btn-default drawbtn">Piirrä uusi polku</button>
+  <button type="button" class="btn btn-default editbtn">Muokkaa polkua</button>
+  <button type="button" class="btn btn-default deletebtn">Poista polku</button>
+  <button type="button" class="btn btn-default savebtn">Tallenna muutokset</button>
+</div>
+</div>
+</div>
+<hr/>
 <div class="row">
 <div class="col-md-2">
 <div id="attrform">
@@ -139,13 +145,13 @@
 <select class="form-control" name="alu" id="inp-alu">
 	<option value="1">Metsä</option>
 	<option value="2">Kallio</option>
-	<option value="3">Niitty</option>	
-	<option value="4">Suo</option>	
+	<option value="3">Niitty</option>
+	<option value="4">Suo</option>
 </select><br/>
 <button id="savebtn" class="btn btn-primary">Tallenna</button>
 </div>
 </div>
-<div id="map" class="col-md-10"></div>
+<div id="map" class="col-md-9"></div>
 </div>
 </div>
 </body>

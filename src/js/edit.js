@@ -224,4 +224,8 @@ $(function () {
     $('.editbtn').click(function(e) { toggleControlActive(edit,'.editbtn'); });
     $('.deletebtn').click(function(e) { toggleControlActive(del,'.deletebtn'); });
 
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 79d77c43c2234635d947a0b3aa2da870566dbefc
