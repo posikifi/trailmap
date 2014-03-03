@@ -14,6 +14,9 @@
             padding-top: 70px;
         }
     </style>
+    <script type="text/javascript">
+    var userroutes = <?php echo json_encode($variables['']['userroutes']);?>;
+    </script>
 <script type="text/javascript" src="http://trailmap.hylly.org/trailmap/OpenLayers.js?mxl277"></script>
 
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -97,11 +100,11 @@
 <?php
 echo drupal_render(drupal_get_form('user_login_block'));
 
+
 ?>
 
 
 <?php endif;?>
-
 </div>
 <!--/.nav-collapse -->
 </div>
@@ -119,6 +122,17 @@ echo drupal_render(drupal_get_form('user_login_block'));
   <button type="button" class="btn btn-default editbtn">Muokkaa polkua</button>
   <button type="button" class="btn btn-default deletebtn">Poista polku</button>
   <button type="button" class="btn btn-default savebtn">Tallenna muutokset</button>
+</div>
+<div class="btn-group">
+  <button type="button" class="btn btn-default routebtn">Luo uusi reitti</button>
+  <select class="form-control" name="mr" id="routemod">
+  <option value="" selected="selected">Muokkaa reittiä</option>
+    <?php
+    foreach ($variables['']['userroutes'] as $ur) {
+        echo '<option value="s' . $ur['id'] . '">' . $ur['nimi'] . '</option>';
+    }
+    ?>
+</select>
 </div>
 </div>
 </div>
@@ -148,7 +162,19 @@ echo drupal_render(drupal_get_form('user_login_block'));
 	<option value="3">Niitty</option>
 	<option value="4">Suo</option>
 </select><br/>
-<button id="savebtn" class="btn btn-primary">Tallenna</button>
+<button class="btn btn-primary savebtn">Tallenna</button>
+</div>
+<div id="routeform">
+<h4>Reitin tiedot</h4>
+<form method="post">
+<label for="inp-name">Nimi</label></br>
+<input type="text" class="form-control" name="nam" id="inp-name"/></br>
+<label for="inp-des">Reitin selite</label></br>
+<textarea class="form-control" name="des" id="inp-des"></textarea></br>
+<input type="hidden" id="tra" name="tra" value=""/>
+<input type="hidden" id="edt" name="edt" value="f"/>
+<input type="submit" name="saveroute" id="saveroute" class="btn btn-primary" value="Tallenna reitti"/>
+</form>
 </div>
 </div>
 <div id="map" class="col-md-9"></div>
