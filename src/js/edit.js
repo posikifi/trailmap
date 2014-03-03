@@ -53,7 +53,7 @@ $(function () {
         protocol: new OpenLayers.Protocol.WFS({
             version: "1.1.0",
             srsName: "EPSG:900913",
-            url: "http://trailmap.hylly.org/trailmap/mapproxy.php",
+            url: "./mapproxy.php",
             featureType: "segment",
             featureNS: "trailmap",
             geometryName: "geom",
@@ -98,22 +98,24 @@ $(function () {
     snap.activate();
 
 
+
+
     var draw = new OpenLayers.Control.DrawFeature(
         wfs, OpenLayers.Handler.Path, {
             title: "Draw Feature",
             displayClass: "olControlDrawFeaturePolygon",
             multi: false,
             eventListeners: {
-                'activate':function (e) {
-                $('#inp-sel').val(null);
-                $('#inp-epa').val(null);
-                $('#inp-alu').val(null);
+                'activate': function (e) {
+                    $('#inp-sel').val(null);
+                    $('#inp-epa').val(null);
+                    $('#inp-alu').val(null);
                     $('#attrform').show(200);
                 },
-                'deactivate':function(e) {
+                'deactivate': function (e) {
                     $('#attrform').hide(200);
                 },
-                'featureadded':function(e) {
+                'featureadded': function (e) {
                     console.log('featureadded');
                     e.feature.attributes.selkeys = $('#inp-sel').val();
                     e.feature.attributes.epatas = $('#inp-epa').val();
@@ -124,23 +126,23 @@ $(function () {
     );
 
 
-   var split = new OpenLayers.Control.Split({
+    var split = new OpenLayers.Control.Split({
         layer: wfs,
         source: wfs,
         deferDelete: true,
         tolerance: 0.0001,
-    eventListeners: {
-        "split": function(event) {
-            //console.log('source',event.source.attributes);
-            for(var i=0; i<event.features.length; ++i) {
-                if (draw.active) {
-                    if (event.features[i].attributes.selkeys == null) event.features[i].attributes.selkeys = $('#inp-sel').val();
-                    if (event.features[i].attributes.epatas == null) event.features[i].attributes.epatas = $('#inp-epa').val();
-                    if (event.features[i].attributes.alusta == null) event.features[i].attributes.alusta = $('#inp-alu').val();
+        eventListeners: {
+            "split": function (event) {
+                //console.log('source',event.source.attributes);
+                for (var i = 0; i < event.features.length; ++i) {
+                    if (draw.active) {
+                        if (event.features[i].attributes.selkeys == null) event.features[i].attributes.selkeys = $('#inp-sel').val();
+                        if (event.features[i].attributes.epatas == null) event.features[i].attributes.epatas = $('#inp-epa').val();
+                        if (event.features[i].attributes.alusta == null) event.features[i].attributes.alusta = $('#inp-alu').val();
+                    }
                 }
             }
         }
-    }
     });
     map.addControl(split);
     split.activate();
@@ -196,7 +198,23 @@ $(function () {
     });
 
     panel.addControls([save, del, edit, draw]);
+
+    var selectedtrails = [];
+    var routeSelect = new OpenLayers.Control.SelectFeature(wfs, {
+        multiple: true,
+        clickout: false,
+        toggle:true,
+        onSelect: function (f) {
+            var id = parseInt(f.fid.split('.')[1]);
+            selectedtrails.push(id);
+        }, onUnselect: function(f) {
+            var id = parseInt(f.fid.split('.')[1]);
+            selectedtrails = selectedtrails.splice(selectedtrails.indexOf(id), 1);
+        }
+    });
+
     map.addControl(panel);
+    map.addControl(routeSelect);
 
 
 
@@ -204,13 +222,22 @@ $(function () {
 
     map.setCenter(center, 7);
     $('#attrform').hide();
+    $('#routeform').hide();
 
     $('.savebtn').click(function (e) {
         //edit.deactivate();
+        //console.log('save');
         save.trigger();
+
     });
 
-    var toggleControlActive = function(cntrl,sel) {
+    $('#saveroute').click(function (e) {
+        $('#tra').val(selectedtrails.join(','));
+        $('#routeform').hide();
+        routeSelect.deactivate();
+    });
+
+    var toggleControlActive = function (cntrl, sel) {
         if (cntrl.active) {
             cntrl.deactivate();
             $(sel).removeClass('active');
@@ -220,12 +247,39 @@ $(function () {
         }
     }
 
-    $('.drawbtn').click(function(e) { toggleControlActive(draw,'.drawbtn'); });
-    $('.editbtn').click(function(e) { toggleControlActive(edit,'.editbtn'); });
-    $('.deletebtn').click(function(e) { toggleControlActive(del,'.deletebtn'); });
+    $('.drawbtn').click(function (e) {
+        toggleControlActive(draw, '.drawbtn');
+    });
+    $('.editbtn').click(function (e) {
+        toggleControlActive(edit, '.editbtn');
+    });
+    $('.deletebtn').click(function (e) {
+        toggleControlActive(del, '.deletebtn');
+    });
 
-<<<<<<< HEAD
+
+
+    $('.routebtn').click(function (e) {
+        $('#routeform').toggle();
+        $('#edt').val('f');
+        toggleControlActive(routeSelect, '.routebtn');
+    });
+
+    $('#routemod').change(function (e) {
+        var ri = userroutes[$('#routemod').val()];
+        $('#edt').val(ri.id);
+        $('#inp-name').val(ri.nimi);
+        $('#inp-des').text(ri.kuvaus);
+
+        routeSelect.activate();
+
+        routeSelect.unselectAll();
+        selectedtrails = [];
+
+        for (var i = 0;i < ri.segments.length;i++) {
+            routeSelect.select(wfs.getFeatureByFid('segment.'+ri.segments[i]));
+        }
+        $('#routeform').toggle();
+    });
+
 });
-=======
-});
->>>>>>> 79d77c43c2234635d947a0b3aa2da870566dbefc
