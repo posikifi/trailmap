@@ -206,10 +206,14 @@ $(function () {
         toggle:true,
         onSelect: function (f) {
             var id = parseInt(f.fid.split('.')[1]);
+            //console.log(f.fid,id,selectedtrails);
             selectedtrails.push(id);
+            //console.log(f.fid,id,selectedtrails);
         }, onUnselect: function(f) {
             var id = parseInt(f.fid.split('.')[1]);
-            selectedtrails = selectedtrails.splice(selectedtrails.indexOf(id), 1);
+            //console.log(f.fid,id,selectedtrails.indexOf(id),selectedtrails);
+            selectedtrails.splice(selectedtrails.indexOf(id), 1);
+            //console.log(selectedtrails);
         }
     });
 
@@ -232,6 +236,7 @@ $(function () {
     });
 
     $('#saveroute').click(function (e) {
+        console.log(selectedtrails);
         $('#tra').val(selectedtrails.join(','));
         $('#routeform').hide();
         routeSelect.deactivate();
@@ -274,12 +279,12 @@ $(function () {
         routeSelect.activate();
 
         routeSelect.unselectAll();
-        selectedtrails = [];
+        selectedtrails = ri.segments.slice();
 
         for (var i = 0;i < ri.segments.length;i++) {
             routeSelect.select(wfs.getFeatureByFid('segment.'+ri.segments[i]));
         }
-        $('#routeform').toggle();
+        $('#routeform').show();
     });
 
 });
