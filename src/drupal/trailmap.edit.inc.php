@@ -28,10 +28,10 @@ function trailmap_edit_view($ghi = 0, $jkl = '') {
 			$routeid = intval($edit);
 			$db->query('DELETE FROM trail.routesegment WHERE route_id = ' . $routeid);
 		}
-
+		$segs = array_unique(array_map("intval",explode(',',trim($_POST['tra']))));
 		$sth = $db->prepare('INSERT INTO trail.routesegment (route_id,segment_id,"order") VALUES(?, ?, ?)');
 		$x = 0;
-		foreach (explode(',',trim($_POST['tra'])) as $rs) {
+		foreach ($segs as $rs) {
 			$rs = intval(trim($rs));
 			$sth->execute(array($routeid,$rs,$x));
 			$x++;
