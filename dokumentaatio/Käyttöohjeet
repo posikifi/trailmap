@@ -1,34 +1,33 @@
 #Trailmap - käyttäjän ohjeet
 ##Johdanto
 Mitä trailmap tekee, miksi
-##Käyttö
-###Omien gps-jälkien lähettäminen
+##Trailmapin käyttö
+###Omien GPS-jälkien lähettäminen
 ###Polkujen piirtäminen
 ###Polkujen muokkaaminen
 ###Polkujen poistaminen
 
-Johdanto
+##Johdanto
 
 Trailmap on nettisivusto, jonne voi tallentaa juostuja polkuja GPS-jälkien perusteella ja jossa voi tarkastella omia ja muiden käyttäjien tallentamia polkuja. Trailmapiin tallennetaan polkujen sijainnin lisäksi tietoja niiden kulkukelpoisuudesta ja selkeydestä, joten Trailmapin avulla voi suunnitella sellaisen juoksu- tai pyöräilyreitin, joka hyödyntää halutunlaisia polkuja. Trailmapiin ei tallenneta suoraan GPS-jälkeä, vaan käyttäjä piirtää GPS-jäljen päälle juoksemansa polun. Tällä tavoin virheet ja piikit GPS-jäljessä eivät näy Trailmapiin muodostuvassa polkukartassa.
 
 
-Trailmapin käyttö
+##Trailmapin käyttö
 
 Polkujen piirtäminen ja muokkaaminen vaativat kirjautumisen Trailmapiin. Sisäänkirjautumisen jälkeen klikkaamalla yläpalkin tekstiä ”Muokkaa polkuja” pääsee piirtämään ja muokkaamaan polkuja.
 
-GPS-jäljen lähettäminen
-...
+### Omien GPS-jälkien lähettäminen
 
-Piirrä uusi polku
-Kun ”Piirrä uusi polku” on valittuna, piirretään uusi polku klikkaamalla kartalle polun taitepisteitä. Polun ominaisuustiedot määritetään seuraavilla valinnoilla:
+###Polkujen piirtäminen:
+Kun ”Piirrä uusi polku” on valittuna, piirrä uusi polku klikkaamalla kartalle polun taitepisteitä. Polun ominaisuustiedot määritetään seuraavilla valinnoilla:
 Selkeys: 1–3
 Epätasaisuus: 1–5
 Alusta: Metsä, Kallio, Niitty tai Suo
 
-Muokkaa polkua
-Piirrettyä polkua voi muokata valitsemalla ”Muokkaa polkua” ja klikkaamalla polkua, jolloin polun puoliväliin ilmestyy taitepiste. Taitepisteen voi vetää haluttuun kohtaan, minkä jälkeen kunkin suoran polunpätkän puoliväliin ilmestyy uusi taitepiste. Polun muokkaamista voi jatkaa, kunnes polku on halutunlainen.
+###Polkujen muokkaaminen:
+Voit muokata piirtämääsi polkua valitsemalla ”Muokkaa polkua” ja klikkaamalla polkua, jolloin polun puoliväliin ilmestyy taitepiste. Taitepisteen voi vetää haluttuun kohtaan, minkä jälkeen kunkin suoran polunpätkän puoliväliin ilmestyy uusi taitepiste. Polun muokkaamista voi jatkaa, kunnes polku on halutunlainen.
 
-Poista polku
+###Polkujen poistaminen:
 Kun ”Poista polku” on valittuna, voi polkuja poistaa klikkaamalla niitä.
 
 Tallenna muutokset
