@@ -1,20 +1,22 @@
 #Trailmap - käyttäjän ohjeet
-##Johdanto
+##Trailmap
 Mitä trailmap tekee, miksi
 ##Trailmapin käyttö
 ###Omien GPS-jälkien lähettäminen
-###Polkujen piirtäminen
+###Polkujen piirtäminen / Luo uusi reitti
 ###Polkujen muokkaaminen
 ###Polkujen poistaminen
+###Tallenna muutokset
+###Taustakartta
 
-##Johdanto
+##Trailmap
 
-Trailmap on nettisivusto, jonne voi tallentaa juostuja polkuja GPS-jälkien perusteella ja jossa voi tarkastella omia ja muiden käyttäjien tallentamia polkuja. Trailmapiin tallennetaan polkujen sijainnin lisäksi tietoja niiden kulkukelpoisuudesta ja selkeydestä, joten Trailmapin avulla voi suunnitella sellaisen juoksu- tai pyöräilyreitin, joka hyödyntää halutunlaisia polkuja. Trailmapiin ei tallenneta suoraan GPS-jälkeä, vaan käyttäjä piirtää GPS-jäljen päälle juoksemansa polun. Tällä tavoin virheet ja piikit GPS-jäljessä eivät näy Trailmapiin muodostuvassa polkukartassa.
+Trailmap on nettisivusto, jonne käyttäjä voi tallentaa polkuja GPS-jälkien perusteella ja jossa voi tarkastella omia sekä muiden käyttäjien tallentamia polkuja. Trailmapiin tallennetaan polkujen sijainnin lisäksi tietoja niiden kulkukelpoisuudesta ja selkeydestä, joten Trailmapin avulla voi suunnitella sellaisen juoksu- tai pyöräilyreitin, joka hyödyntää halutunlaisia polkuja. Trailmapiin ei tallenneta suoraan GPS-jälkeä, vaan käyttäjä piirtää GPS-jäljen päälle juoksemansa polun. Tällä tavoin virheet ja piikit GPS-jäljessä eivät näy Trailmapiin muodostuvassa polkukartassa.
 
 
 ##Trailmapin käyttö
 
-Polkujen piirtäminen ja muokkaaminen vaativat kirjautumisen Trailmapiin. Sisäänkirjautumisen jälkeen klikkaamalla yläpalkin tekstiä ”Muokkaa polkuja” pääsee piirtämään ja muokkaamaan polkuja.
+Polkujen piirtäminen ja muokkaaminen vaativat kirjautumisen Trailmapiin. Sisäänkirjautumisen jälkeen pääset piirtämään ja muokkaamaan polkujasi klikkaamalla yläpalkin tekstiä ”Muokkaa polkuja”.
 
 ### Omien GPS-jälkien lähettäminen
 
@@ -24,17 +26,18 @@ Selkeys: 1–3
 Epätasaisuus: 1–5
 Alusta: Metsä, Kallio, Niitty tai Suo
 
+Uuden reitin luominen
+Poluista muodostuvan reitin voi luoda valitsemalla ”Luo uusi reitti” ja klikkaamalla niitä polkuja, jotka muodostavat halutun reitin. Lisäksi kirjoitetaan reitin nimi ja selite.
+
 ###Polkujen muokkaaminen:
 Voit muokata piirtämääsi polkua valitsemalla ”Muokkaa polkua” ja klikkaamalla polkua, jolloin polun puoliväliin ilmestyy taitepiste. Taitepisteen voi vetää haluttuun kohtaan, minkä jälkeen kunkin suoran polunpätkän puoliväliin ilmestyy uusi taitepiste. Polun muokkaamista voi jatkaa, kunnes polku on halutunlainen.
 
 ###Polkujen poistaminen:
 Kun ”Poista polku” on valittuna, voi polkuja poistaa klikkaamalla niitä.
 
-Tallenna muutokset
+###Tallenna muutokset
 Piirretyt polut ja polkujen muokkaukset voi tallentaa valitsemalla ”Tallenna muutokset”.
 
-Luo uusi reitti
-Poluista muodostuvan reitin voi luoda valitsemalla ”Luo uusi reitti” ja klikkaamalla niitä polkuja, jotka muodostavat halutun reitin. Lisäksi kirjoitetaan reitin nimi ja selite.
 
 Klikkaamalla yläpalkin tekstiä ”Takaisin reittikarttaan” pääsee jälleen näkymään, jossa voi tarkastella Trailmapiin tallennettuja polkuja.
 
@@ -42,7 +45,7 @@ Muokkaa reittiä
 Omia tallennettuja reittejä voi muokata valitsemalla ”Muokkaa reittiä” -alasvetovalikosta reitin nimen.
 
 
-Taustakartta
+###Taustakartta
 
 Trailmapin taustakartaksi voi vaihtaa joko peruskartan (”Kapsi peruskartta”) tai pullautuskartan (”pullauttelua”). Trailmapiin tallennetut polut saa näkyviin klikkaamalla ruksin kohtaan ”Polut”, ja ruksin poistamalla polut saa piilotettua.
 
