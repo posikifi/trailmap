@@ -9,6 +9,8 @@ Mitä trailmap tekee, miksi
 ###Tallenna muutokset
 ###Taustakartta
 
+###Ongelmatilanteet
+
 ##Trailmap
 
 Trailmap on nettisivusto, jonne käyttäjä voi tallentaa polkuja GPS-jälkien perusteella ja jossa voi tarkastella omia sekä muiden käyttäjien tallentamia polkuja. Trailmapiin tallennetaan polkujen sijainnin lisäksi tietoja niiden kulkukelpoisuudesta ja selkeydestä, joten Trailmapin avulla voi suunnitella sellaisen juoksu- tai pyöräilyreitin, joka hyödyntää halutunlaisia polkuja. Trailmapiin ei tallenneta suoraan GPS-jälkeä, vaan käyttäjä piirtää GPS-jäljen päälle juoksemansa polun. Tällä tavoin virheet ja piikit GPS-jäljessä eivät näy Trailmapiin muodostuvassa polkukartassa.
@@ -66,3 +68,7 @@ Polkua klikkaamalla aukeaa ikkuna, josta selviävät polun alusta, selkeys ja ep
 Reitit
 
 Trailmapiin voi tallentaa yksittäisten polkujen lisäksi myös kokonaisia reittejä. Tiedot tallennetuista reiteistä näkyvät karttaikkunan vasemmalla puolella. Tiedoissa näkyvät reitin nimi, reitin selite, reitin pituus ja tekijä.
+
+###Ongelmatilanteet
+
+Mikäli havaitset sovelluksessa virheitä tai bugeta, ota yhteyttä: XXXXXXX
